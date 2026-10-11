@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Tavola Italian Restaurant</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #72aa7b;
+      --green-light: #d8f0dc;
+      --dark: #303030;
+      --cream: #f7f7f7;
+      --text: #292929;
+      --muted: #999;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--cream);
+      font-family: Arial, sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: auto;
+      background:
+        linear-gradient(90deg, rgba(255, 249, 237, .96) 0%, rgba(255, 249, 237, .84) 50%, rgba(255, 249, 237, .15) 100%),
+        url("assets/pizza-hero.jpg") center / cover,
+        linear-gradient(135deg, #f5d6ad, #fff8ee);
+    }
+
+    @media (min-width: 992px) {
+      .hero {
+        min-height: 560px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #b6533d;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0 0 20px;
+      color: #2b2b2b;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      margin-bottom: 22px;
+      color: #5f5349;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .hero-badge {
+      padding: .45rem .9rem;
+      background: var(--green-light);
+      color: #3d6b4b;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .btn-brand {
+      color: #fff;
+      background: #bd563e;
+      border-color: #bd563e;
+      font-weight: 700;
+    }
+
+    .btn-brand:hover {
+      color: #fff;
+      background: #9f4431;
+      border-color: #9f4431;
+    }
+
+    .btn-outline-brand {
+      color: #bd563e;
+      background: transparent;
+      border-color: #bd563e;
+      font-weight: 700;
+    }
+
+    .btn-outline-brand:hover {
+      color: #fff;
+      background: #bd563e;
+      border-color: #bd563e;
+    }
+
+    @media (max-width: 991.98px) {
+      .hero {
+        background:
+          linear-gradient(rgba(255, 249, 237, .9), rgba(255, 249, 237, .9)),
+          url("assets/pizza-hero.jpg") center / cover,
+          linear-gradient(135deg, #f5d6ad, #fff8ee);
+      }
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .why-section {
+      padding: 58px 0 50px;
+      background: #fff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 38px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      flex: 0 0 46px;
+      place-items: center;
+      color: #555;
+      border: 1px solid #777;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .feature:nth-child(2) .feature-icon,
+    .feature:nth-child(5) .feature-icon {
+      border-radius: 0;
+      border-width: 1px 0;
+    }
+
+    .feature:nth-child(3) .feature-icon {
+      border-radius: 0 0 50% 50%;
+    }
+
+    .feature h3 {
+      margin-bottom: 5px;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .feature p {
+      max-width: 145px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 8px;
+      line-height: 1.45;
+    }
+
+    .testimonials {
+      min-height: 328px;
+      padding: 70px 0 45px;
+      color: #fff;
+      text-align: center;
+      background:
+        linear-gradient(rgba(35, 44, 44, .66), rgba(35, 44, 44, .66)),
+        url("assets/testimonials.jpg") center / cover,
+        #68716f;
+    }
+
+    .testimonials h2 {
+      color: #fff;
+      font-size: 28px;
+    }
+
+    .testimonial-copy {
+      max-width: 450px;
+      margin: 20px auto 14px;
+      font-size: 11px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .testimonial-name {
+      margin-bottom: 30px;
+      font-size: 9px;
+    }
+
+    .avatars {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background-position: center;
+      background-size: cover;
+      font-size: 8px;
+    }
+
+    .avatar-1 {
+      background-image: url("assets/avatar-1.jpg");
+      background-color: #d7a17f;
+    }
+
+    .avatar-2 {
+      background-image: url("assets/avatar-2.jpg");
+      background-color: #d5b08d;
+    }
+
+    .avatar-3 {
+      background-image: url("assets/avatar-3.jpg");
+      background-color: #b9d3e2;
+    }
+
+    .avatar-4 {
+      background-image: url("assets/avatar-4.jpg");
+      background-color: #8e9b79;
+    }
+
+    .menu-section {
+      padding: 34px 0 42px;
+      background: #f4f4f4;
+      scroll-margin-top: 20px;
+    }
+
+    .menu-card {
+      max-width: 616px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 42px;
+      padding: 22px 10px;
+      background: var(--dark);
+    }
+
+    .menu-tabs label {
+      color: #888;
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .menu-radio {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-body {
+      min-height: 428px;
+      padding: 30px 20px;
+    }
+
+    .menu-content {
+      max-width: 414px;
+      margin: 0 auto;
+    }
+
+    .menu-items {
+      display: none;
+    }
+
+    #mains:checked ~ .menu-tabs label[for="mains"],
+    #desserts:checked ~ .menu-tabs label[for="desserts"],
+    #drinks:checked ~ .menu-tabs label[for="drinks"] {
+      color: #fff;
+    }
+
+    #mains:checked ~ .menu-body .mains,
+    #desserts:checked ~ .menu-body .desserts,
+    #drinks:checked ~ .menu-body .drinks {
+      display: block;
+    }
+
+    .menu-item {
+      margin-bottom: 20px;
+    }
+
+    .menu-price,
+    .offer-price {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .menu-price {
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    .menu-item h3 {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .menu-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 8px;
+      line-height: 1.45;
+    }
+
+    .offers-section {
+      padding: 62px 0 74px;
+      background: #fff;
+    }
+
+    .offers-intro {
+      max-width: 430px;
+      margin: -15px auto 31px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 616px;
+      margin: 0 auto;
+    }
+
+    .offer-image {
+      aspect-ratio: .94;
+      margin-bottom: 15px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .ravioli {
+      background-image: url("assets/ravioli.jpg");
+      background-color: #6e777d;
+    }
+
+    .black-pasta {
+      background-image: url("assets/black-pasta.jpg");
+      background-color: #806b61;
+    }
+
+    .gelato {
+      background-image: url("assets/gelato.jpg");
+      background-color: #956978;
+    }
+
+    .offer-name {
+      margin-bottom: 8px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .offer-price {
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .feature-grid,
+      .offer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-grid,
+      .offer-grid {
+        grid-template-columns: 1fr;
+        max-width: 270px;
+      }
+
+      .menu-tabs {
+        gap: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="home" class="hero py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-xl-6">
+          <p class="hero-eyebrow">La Tavola &middot; Italian Hotel</p>
+
+          <h1 class="hero-title">Authentic Italian Hospitality, Made for Your Stay</h1>
+
+          <p class="hero-copy">
+            Welcome to La Tavola, where warm hospitality and honest Italian flavours
+            follow you from arrival to checkout.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="badge rounded-pill hero-badge">Vegetarian</span>
+            <span class="badge rounded-pill hero-badge">Gluten-aware</span>
+            <span class="badge rounded-pill hero-badge">Plant-forward</span>
+            <span class="badge rounded-pill hero-badge">Classic favourites</span>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a class="btn btn-brand btn-lg px-4" href="#booking">Book your stay</a>
+            <a class="btn btn-outline-brand btn-lg px-4" href="#menu">Explore our menu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="why-section">
+    <div class="container">
+      <h2 class="section-title">Why People Choose Us</h2>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-icon">♧</div>
+          <div>
+            <h3>Friendly Team</h3>
+            <p>Warm service that makes every guest feel at home.</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">◉</div>
+          <div>
+            <h3>Fresh Food</h3>
+            <p>Seasonal produce and quality ingredients in every plate.</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">≋</div>
+          <div>
+            <h3>Quality Cuisine</h3>
+            <p>Traditional comfort food with a fresh modern touch.</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">♙</div>
+          <div>
+            <h3>Best Service</h3>
+            <p>Attentive hospitality for relaxed and memorable visits.</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">☕</div>
+          <div>
+            <h3>Diverse Menu</h3>
+            <p>Plant-forward dishes, classics, desserts, and more.</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">△</div>
+          <div>
+            <h3>Affordable Prices</h3>
+            <p>Generous portions and great food at friendly prices.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2>Testimonials</h2>
+
+      <p class="testimonial-copy">
+        “A beautiful table, thoughtful choices, and flavours that made everyone
+        in our group feel completely at home.”
+      </p>
+
+      <p class="testimonial-name">Joanna Smith</p>
+
+      <div class="avatars">
+        <div class="avatar avatar-1">JS</div>
+        <div class="avatar avatar-2">AM</div>
+        <div class="avatar avatar-3">LP</div>
+        <div class="avatar avatar-4">DK</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <h2 class="section-title">Our Restaurant Menu</h2>
+
+      <div class="menu-card">
+        <input class="menu-radio" type="radio" name="menu" id="mains" checked>
+        <input class="menu-radio" type="radio" name="menu" id="desserts">
+        <input class="menu-radio" type="radio" name="menu" id="drinks">
+
+        <div class="menu-tabs">
+          <label for="mains">Mains</label>
+          <label for="desserts">Desserts</label>
+          <label for="drinks">Drinks</label>
+        </div>
+
+        <div class="menu-body">
+          <div class="menu-content">
+            <div class="menu-items mains">
+              <article class="menu-item">
+                <span class="menu-price">$25.89</span>
+                <h3>Osso Buco</h3>
+                <p>Slow-cooked veal in a white wine tomato sauce. Melt-in-the-mouth, hearty, and luxurious.</p>
+              </article>
+
+              <article class="menu-item">
+                <span class="menu-price">$16.89</span>
+                <h3>Pappardelle Mimmo</h3>
+                <p>Wide pasta with scallops, lobster, asparagus, butter, sage, and truffle oil.</p>
+              </article>
+
+              <article class="menu-item">
+                <span class="menu-price">$17.89</span>
+                <h3>Trippa Satriano</h3>
+                <p>Fresh seasonal ingredients with tomatoes, olives, capers, red onions, and fennel.</p>
+              </article>
+
+              <article class="menu-item">
+                <span class="menu-price">$18.89</span>
+                <h3>Filetto Di Manzo</h3>
+                <p>Prime tenderloin, winter greens, artichoke purée, and oxtail reduction sauce.</p>
+              </article>
+            </div>
+
+            <div class="menu-items desserts">
+              <article class="menu-item">
+                <span class="menu-price">$8.00</span>
+                <h3>Classic Tiramisu</h3>
+                <p>Espresso-soaked ladyfingers layered with mascarpone cream and cocoa.</p>
+              </article>
+
+              <article class="menu-item">
+                <span class="menu-price">$7.50</span>
+                <h3>Vanilla Panna Cotta</h3>
+                <p>Silky Italian custard served with seasonal berries.</p>
+              </article>
+            </div>
+
+            <div class="menu-items drinks">
+              <article class="menu-item">
+                <span class="menu-price">$6.50</span>
+                <h3>Italian Soda</h3>
+                <p>Refreshing sparkling soda with citrus and berry flavours.</p>
+              </article>
+
+              <article class="menu-item">
+                <span class="menu-price">$9.00</span>
+                <h3>Aperol Spritz</h3>
+                <p>A classic combination of Aperol, prosecco, and sparkling water.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="container">
+      <h2 class="section-title">Featured Offers</h2>
+
+      <p class="offers-intro">
+        Discover crowd-pleasing Italian dishes and desserts made for sharing,
+        celebrating, and enjoying at your own pace.
+      </p>
+
+      <div class="offer-grid">
+        <article>
+          <div class="offer-image ravioli"></div>
+          <h3 class="offer-name">Ravioli</h3>
+          <div class="offer-price">$8</div>
+        </article>
+
+        <article>
+          <div class="offer-image black-pasta"></div>
+          <h3 class="offer-name">Black Pasta</h3>
+          <div class="offer-price">$13</div>
+        </article>
+
+        <article>
+          <div class="offer-image gelato"></div>
+          <h3 class="offer-name">Gelato</h3>
+          <div class="offer-price">$4</div>
+        </article>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
